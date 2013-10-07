@@ -1,0 +1,341 @@
+<html>
+    <head>
+        <title>Peace Corps</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Import CSS -->
+<link rel="stylesheet" type="text/css" href="assets/css/af.ui.base.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/af.ui.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/master.css" /> 
+<!--<link rel="stylesheet" type="text/css" href="assets/css/icons.css" /> -->
+<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+
+<!--<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+<!-- Import Google fonts -->
+<link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+
+<!-- Import Javascript -->
+<!--<script type="text/javascript" charset="utf-8" src="assets/js/appframework.min.js"></script>--> 
+
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="assets/js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="assets/js/jq.appframework.js"></script>
+<script type="text/javascript" charset="utf-8" src="assets/js/appframework.ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="assets/js/PC.js"></script>
+<script type="text/javascript" charset="utf-8" src="assets/js/pccareer.js"></script>
+<script type="text/javascript" charset="utf-8" src="assets/js/pcevent.js"></script>
+<script type="text/javascript" charset="utf-8" src="assets/js/donateform.js"></script>
+<!-- Import jqMobi plugins -->
+<script type="text/javascript" charset="utf-8" src="assets/js/jquery.simplemodal.1.4.4.min.js"></script>
+
+<!-- For web interface functionality -->
+<!--<script type="text/javascript" charset="utf-8" src="assets/js/jquery.xdomainajax.js"></script>-->
+
+<!-- For google analytics -->
+<script type="text/javascript" src="assets/js/GALocalStorage.js"></script>
+<!--<script>
+    ga_storage._setAccount('UA-41387766-2'); //Replace with your own
+    ga_storage._trackPageview('/index.html');
+
+</script>-->
+
+
+<!-- Initilization Javascript -->
+<script type="text/javascript">
+        /* This function runs when the body is loaded.*/
+        var init = function () {
+        	$.ui.backButtonText = "Back";// We override the back button text to always say "Back"
+			//localStorage.clear();
+			console.log("init launch");
+			setTimeout(function(){navigator.splashscreen.hide()},1000);
+			//$("#navbar_donate").click(function(){$.ui.loadContent("donate",false,false,"fade");});
+			//navigator.splashscreen.hide();
+        };
+        document.addEventListener("DOMContentLoaded", init, false);
+		$.ui.ready(function () {
+			console.log("ui launch");
+			//navigator.splashscreen.hide();
+			//Add swipe listeners
+            //This function will get executed when $.ui.launch has completed
+        });
+    </script>
+    
+    <script type="text/javascript" charset="utf-8">
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap-1.0.0.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `deviceready`.
+    // 
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    function onDeviceReady() {
+		<!--alert("Device ready, button intitated");-->
+		//devplatorm = device.platform;
+		//devversion = device.version;
+		document.addEventListener("backbutton", function(e){
+			if ($("#jobcontainer").is(':visible')) //back button binding for the career page
+			{
+			$("#jobcontainer").hide();
+			$("#resultcontainer").show();
+			}
+			else if ($("#eventjobcontainer").is(':visible')) //back button binding for the career page
+			{
+			$("#eventjobcontainer").hide();
+			$("#eventresultcontainer").show();
+			}
+		else if ($("#simplemodal-container").html()!=undefined){ // if the modal is showing
+			modal.close();
+		}
+		else if ($("#header").find('#backButton').length==1)
+		{$.ui.goBack();}  
+	  	e.preventDefault();
+	  	}, false);/*
+		alert(devplatform);
+		alert(devversion);*/		
+    }
+
+</script>
+</head>
+	<body>
+        <div id="afui"> <!-- this is the main container div.  This way, you can have only part of your app use UI -->
+            <!-- this is the header div at the top -->
+            <div id="header">
+                <!--<a href="javascript:$.ui.toggleSideMenu()" class="button" style="float:right">Toggle Nav</a>-->
+               <!-- <a id="backButton" href="javascript:;" class="button">Back</a>-->
+                <h1>Peace Corps</h1>
+                <!--<a id="donatebutton" href="#donate" class="button icon heart mini">Donate</a>-->
+            </div>
+            <div id="content">
+                <script>
+				function InitInfo(div) {
+				console.log("Information initialized");	
+				removeLoad();
+				//alert("device:"+device.version);
+				}
+				</script>
+                <!-- here is where you can add your panels -->               
+                <div title='Information' id="information" class="panel"  selected="true"  data-defer="info.html" data-load="InitInfo"></div>
+                
+               <!-- Information Panels -->
+                <div title='History' id="history" class="panel"data-defer="info/history.html">
+                </div>
+                <div title='Eligibility' id="eligibility" class="panel"data-defer="info/eligibility.html">
+                </div>
+                <div title='Application' id="application" class="panel"data-defer="info/application.html">
+                </div>
+                <div title='Qualifications' id="qualifications" class="panel"data-defer="info/qualifications.html">
+                </div>
+                <div title='Benefits' id="benefits" class="panel"data-defer="info/benefits.html">
+                </div>
+                
+<!--
+                <script> function updateVid(div){document.getElementById('videoframe').contentWindow.prepareYoumax();} 
+            </script>
+                    <header>
+                        <h1>Peace Corps Video</h1>
+                        <a id="backButton" href="javascript:;" class="button">Back</a>
+                    </header>
+                    <div class="icontainer">
+                        <iframe id="videoframe" src="media/video.html" style="border: 0; position:relative; top:0; left:0; right:0; bottom:0; width:100%; height:100%">Your browser doesn't support iFrames.</iframe>
+                    </div>
+                </div>
+             
+             <div title='Twitter' id="twitter" class="panel" data-load="updateTwitter" data-defer="media/twitter.html">
+<script> function updateTwitter(div){$("#twitter-widget-0").attr("width",window.innerWidth+"px");
+		console.log ("injecting css to twitter");
+			var cssLink = document.createElement("link");
+			cssLink.href="assets/css/twitter.css";
+			cssLink.rel="stylesheet";
+			cssLink.type="text/css";
+			var doc = document.getElementById("twitter-widget-0").contentWindow.document;
+			console.log(cssLink);
+			doc.body.appendChild(cssLink);
+			console.log(doc);
+			} </script>
+           </div>-->
+                
+           <div title='Donate' id="donate" class="panel" data-load="setupDonate" data-defer="donate/donate.html" data-tab="navbar_donate"></div>
+           <div title='Donate2' id="donate2" class="panel" data-load="setupDonate2" data-defer="donate/donate2.html">
+           <!--
+           <script>
+		    function updateDonate(div){
+            if(document.getElementById('donateframe').src!="http://www.peacecorps.gov/about/give/"){
+            document.getElementById('donateframe').src = "http://www.peacecorps.gov/about/give/";}}
+		    function mobilizeDonate(div){            
+			console.log ("injecting css to donate page");
+			var cssLink = document.createElement("link");
+			cssLink.href="assets/css/donate.css";
+			cssLink.rel="stylesheet";
+			cssLink.type="text/css";
+			var doc = document.getElementById("donateframe").contentWindow.document;
+			console.log(cssLink);
+			doc.body.appendChild(cssLink);
+			console.log(doc);
+            } </script>-->
+            
+           </div>  
+
+            <!-- this is the default left side nav menu.  If you do not want any, do not include these -->
+            <!--<nav>
+                <div class='title'>Home</div>
+                <ul>
+                    <li >
+                        <a class="icon home mini" href="#main">Selectors</a>
+                    </li>
+                </ul>
+            </nav>-->
+            
+            <!-- Start content panels -->
+            
+     <!-- Media Panels -->
+     <div title='Media' id="media" class="panel" data-defer="media.html" data-load="removeLoad"></div> 
+     <div title='Blog' id="blog" class="panel" data-defer="media/blog.html" data-load="updateBlog"></div> 
+            <script>
+			function updateBlog(div){
+		   //alert("loading video");
+		   $('body').addClass('loading');
+		   $('#blogframecontainer').empty();
+		   $('#blogframecontainer').append('<iframe src="http://passport.peacecorps.gov/" style="border: 0; position:relative; top:0; left:0; right:0; bottom:0; width:100%; height:100%; z-index:1;" id="blogframe" onload="removeLoad();">Your browser does not support iFrames.</iframe>');
+		   $("#blogframe").height($('#blog').height());
+		   /*document.getElementById('videoframe').contentWindow.prepareYoumax();*/}</script>
+     <div title='Video' id="video" class="panel" data-load="updateVid">
+       <script> function updateVid(div){
+		   //alert("loading video");
+		   $('body').addClass('loading');
+		   $('#videoframecontainer').empty();
+		   $('#videoframecontainer').append('<iframe id="videoframe" src="media/video.html" style="border: 0; position:relative; top:0; left:0; right:0; bottom:0; width:100%; height:100%; z-index:1;" onload="removeLoad();">Your browser does not support iFrames.</iframe>');
+		   //$("#videoframe").height($('#video').height());
+		   //$('body').removeClass('loading');
+		   /*document.getElementById('videoframe').contentWindow.prepareYoumax();*/}</script>
+        <header>
+            <h1>Peace Corps Video</h1>
+            <a id="backButton" href="javascript:;" class="button">Back</a>
+        </header>
+        <div id="videoframecontainer">
+        </div>
+        </div>
+        <script>
+		function updateReddit(div){
+			$('body').addClass('loading');
+		   $('#redditframecontainer').empty();
+		   $('#redditframecontainer').append('<iframe src="http://www.reddit.com/r/peacecorps/.compact" style="border: 0; position:relative; top:0; left:0; right:0; bottom:0; width:100%; height:100%; z-index:1;" id="redditframe" onload="removeLoad();">Your browser does not support iFrames.</iframe>');
+		   $("#redditframe").height($('#reddit').height());
+			}
+		</script>
+     <div title='Reddit' id="reddit" class="panel" data-load="updateReddit" data-defer="media/reddit.html">
+    </div>
+     
+     <!--RPCV Panels -->
+     <div title='RPCV' id="rpcvmenu" class="panel" data-defer="rpcv.html" data-load="removeLoad"></div> 
+     <div title='Career' id="career" class="panel" data-defer="rpcv/career.html" data-load="part2" data-tab="navbar_career"></div>
+     <div title='RPCV Career Center' id="careercenter" class="panel" data-defer="rpcv/careercenter.html"></div> 
+     <div title='Coverdell' id="coverdell" class="panel" data-defer="rpcv/coverdell.html"></div> 
+     <div title='PCResponse' id="pcresponse" class="panel" data-defer="rpcv/pcresponse.html"></div>         
+         <div title='Presentation Materials' id="materials" class="panel" data-defer="rpcv/materials.html"></div> 
+     <div title='Peace Corps Week' id="pcweek" class="panel" data-defer="rpcv/pcweek.html"></div> 
+     <div title='Speakers Match Program' id="speakers" class="panel" data-defer="rpcv/speakers.html"></div> 
+      <div title='NPCA' id="npca" class="panel" data-defer="rpcv/npca.html"></div>  
+     
+     <!--Event Tab -->
+     
+     <div title='Events' id="events" class="panel" data-defer="events.html" data-load="epart2"></div>
+     
+    <!-- <script>function careerInit(div){/*alert("career init");*/part2();}</script>-->
+     <div title='Resources' id="rpcvresources" class="panel" data-defer="rpcv/resources.html"></div>
+    <!-- About Panels -->       
+    <div title='Fast Facts' id="fastfacts" class="panel" data-defer="info/fastfacts.html">
+    </div>
+    <div title='Core Expectations' id="expectations" class="panel" data-defer="info/expectations.html">
+    </div>
+    <!-- Other Application Panels -->
+    <div title='How to Become a Volunteer' id="howvolunteer" class="panel" data-defer="info/howvolunteer.html">
+    </div>
+    <div title='Tips' id="tips" class="panel" data-defer="info/tips.html">
+    </div>
+    
+    <!-- Eligibility Panels -->       
+    <div title='Medical History' id="medhistory" class="panel" data-defer="info/eligibility/medhistory.html">
+    </div>
+    <div title='Legal History' id="legalhistory" class="panel" data-defer="info/eligibility/legalhistory.html">
+    </div>
+    <div title='Citizenship/Naturalization' id="citizen" class="panel" data-defer="info/eligibility/citizen.html">
+    </div>
+    <div title='Military Discharge' id="military" class="panel" data-defer="info/eligibility/military.html">
+    </div>
+    <div title='Financial Obligations' id="finance" class="panel" data-defer="info/eligibility/finance.html">
+    </div>
+    <div title='Intelligence History' id="intel" class="panel" data-defer="info/eligibility/intel.html">
+    </div>
+   <div title='Couples' id="couples" class="panel" data-defer="info/eligibility/couples.html">
+    </div>
+    
+    <!-- Application Panels -->       
+    <div title='The Application' id="appdetail" class="panel" data-defer="info/application/appdetail.html">
+    </div>
+    <div title='How to Become a More Competitive Applicant' id="competition" class="panel" data-defer="info/application/competition.html">
+    </div>
+    <div title='Interview' id="interview" class="panel" data-defer="info/application/interview.html">
+    </div>
+    <div title='Nomination' id="nomination" class="panel" data-defer="info/application/nomination.html">
+    </div>
+    <div title='Medical, Legal, Suitability and Competitive Reviews' id="reviews" class="panel" data-defer="info/application/reviews.html">
+    </div>
+    <div title='How Peace Corps Determines Selection and Placement' id="selection" class="panel" data-defer="info/application/selection.html">
+    </div>
+    <div title='Invitation' id="invitation" class="panel" data-defer="info/application/invitation.html">
+    </div>
+    <div title='Final Medical Clearance' id="medclearance" class="panel" data-defer="info/application/medclearance.html">
+    </div>
+   <div title='Preparation for Departure' id="prepfordepart" class="panel" data-defer="info/application/prepfordepart.html">
+    </div>
+
+    <!-- Qual & Placement Panels -->       
+    <div title='Education' id="education" class="panel" data-defer="info/qualplace/education.html">
+    </div>
+    <div title='Health' id="health" class="panel" data-defer="info/qualplace/health.html">
+    </div>
+    <div title='Youth' id="youth" class="panel" data-defer="info/qualplace/youth.html">
+    </div>
+    <div title='Agriculture' id="agriculture" class="panel" data-defer="info/qualplace/agriculture.html">
+    </div>
+    <div title='Environment' id="environment" class="panel" data-defer="info/qualplace/environment.html">
+    </div>
+    <div title='Business' id="business" class="panel" data-defer="info/qualplace/business.html">
+    </div>
+    <!-- Benefits Panels -->       
+    <div title='Financial Benefits and Loan Deferment' id="finbenefit" class="panel" data-defer="info/benefit/finbenefit.html">
+    </div>
+    <div title='Medical Benefits' id="medbenefit" class="panel" data-defer="info/benefit/medbenefit.html">
+    </div>
+    <div title='Educational Benefits' id="edubenefit" class="panel" data-defer="info/benefit/edubenefit.html">
+    </div>
+    <div title='Professional and Career Benefits' id="profbenefit" class="panel" data-defer="info/benefit/profbenefit.html">
+    </div>
+
+<!-- Events Panels -->
+     <!--<div title='Events' id="events" class="panel" data-defer="events.html" data-load="removeLoad"></div> -->
+
+    </div><!-- end content -->
+   
+   <!-- bottom navbar. Add additional tabs here -->
+    <div id="navbar">
+        <div class="horzRule"></div>
+
+        <a href="#information" id='navbar_info'class='pressed' ><i class="icon-info-sign navbaricon"></i><span>Info</span></a><!--
+        <a href="#donate" id='navbar_donate'><span class='icon heart' >Donate</span></a>-->
+
+        <a href="#media" id='navbar_media'><i class="icon-picture navbaricon"></i><span>Media</span></a>
+        <a href="#events" id='navbar_events'><i class="icon-calendar navbaricon"></i><span>Events</span></a>
+        <a href="#rpcvmenu" id='navbar_rpcv' class='icon user icon2'><i class="icon-globe navbaricon"></i><span>RPCV</span></a>
+        <a href="#career" id='navbar_career' ><i class="icon-briefcase navbaricon"></i><span>Career</span></a>
+    </div>  
+    </div><!--end afUI -->
+
+    <div class="modal"></div><!-- Loading bar -->
+</body>
+</html>

@@ -167,10 +167,10 @@ body {
   height: 44px;
   left: 0;
   right: 0;
-  background: #003552;
+  background: #685744;
   border: none;
   color: #F7F7F7;
-  border-bottom: 1px solid #003552;
+  border-bottom: 1px solid #685744;
 }
 #afui #header h1 {
   position: absolute;
@@ -272,7 +272,7 @@ body {
   -webkit-perspective: 1000;
 }
 #afui .panel h2 {
-  color:#005f7e/* #003552*/;
+  color:#685744/* #685744*/;
 }
 #afui #navbar {
   position: absolute;
@@ -283,9 +283,9 @@ body {
   left: 0;
   right: 0;
   padding: 0 3px;
-  background: #003552;
+  background: #685744;
   border: none;
-  border-top: 1px solid #003552;
+  border-top: 1px solid #685744;
   box-shadow: none;
 }
 #afui #navbar a {
@@ -308,7 +308,7 @@ body {
   margin: 0;
 }
 #afui #navbar a.pressed {
-  background: #1C112B;
+  background: #483724;
 }
 #afui #navbar .af-badge {
   right: auto;
@@ -392,13 +392,13 @@ body {
   border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  background: #003552;
+  background: #685744;
   color: inherit;
   font-size: 1em;
 }
 #afui #menu .list > li > a:after {
   margin-top: -8px;
-  color: #003552;
+  color: #685744;
 }
 #afui .splashscreen {
   background: #1d1d1c !important;
@@ -513,7 +513,7 @@ body {
   width: 24px;
   border-radius: 12px;
   border: 1px solid #666;
-  background: #fff;
+  background: #C16B32;
   color: #333;
   font-weight: bold;
   font-size: 21px;
@@ -527,7 +527,7 @@ body {
 #afui .closebutton.selected,
 #afui .closebutton.modalButton.selected {
   color: #fff;
-  background: #333;
+  background: #C16B32;
 }
 #afui .panel > .list,
 #afui .panel > .afScrollPanel > .list {
@@ -1207,7 +1207,7 @@ body {
   top: 50%;
   width: 100%;
   float: left;
-  border: solid 1px #003552;
+  border: solid 1px #685744;
   left: 0px !important;
   padding: 10px;
   opacity: 1;
@@ -1299,7 +1299,7 @@ body {
   border-bottom: 1px solid #444;
 }
 #afui #afSelectBoxfix .selected {
-  background: #003552;
+  background: #685744;
 }
 #afui .afFakeSelect {
   width: 200px;
@@ -1326,8 +1326,8 @@ body {
   display: inline-block;
   height: 30px;
   width: 100px;
-  background: #003552;
-  border: 1px solid #003552;
+  background: #685744;
+  border: 1px solid #685744;
   text-align: center;
   line-height: 2em;
   float: left;

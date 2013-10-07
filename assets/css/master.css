@@ -18,14 +18,14 @@
   text-align: center;
   vertical-align: top;
   cursor: pointer;
-  background-color: #24173F;/*#eee;*/
-  border: 1px solid #666;
+  background-color: #D8B473;/*#eee;*/
+  border: 1px solid #D8B473;
   text-decoration: none;
   z-index: 2;
 }
 .simplemodal-data p {margin-top:5px;margin-bottom:5px;}
-body {margin:0px;padding:0px;background:#003552;color:#45413e;}
-#afui{background:#003552!important;}
+body {margin:0px;padding:0px;background:#685744;color:#45413e;}
+#afui{background:#685744!important;}
 .localcontentpanel{
 padding:15px !important;
 min-width:100%;
@@ -51,7 +51,7 @@ margin-bottom: -1px!important;
 
 .sectors {font-size:12px;}
 .sectors > li > a {padding:10px 24px 10px 10px!important;}
-#content{background:#EDF3DE!important;/*#E1DEC7!important;*/}
+#content{background:#FEFEF6 url('../../bg.jpg') no-repeat bottom right fixed!important;/*#E1DEC7!important;*/}
 
 h1 {
 	font-family: 'EB Garamond', serif !important;
@@ -240,7 +240,7 @@ color: #CE1717;
 clear:both;}
 
 #py_title {
-	color: #003552;
+	color: #685744;
 display: block;
 /*font-family: 'EB Garamond', serif;*/
 font-family: 'Bree Serif', serif;
